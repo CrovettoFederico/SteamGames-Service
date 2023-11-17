@@ -1,0 +1,60 @@
+
+{
+	"Steam":
+	{
+		"web" : "lalo"
+		"date": "12febrero"
+		"apps": [
+			{
+				"app1": {
+					"tags": [
+						{
+							"tag1": "value"
+						},
+						{
+							"tag2": "value"
+						}
+					]
+				}
+			},
+			{
+				"app2": {
+					"tags": [
+						{
+							"tag1": "value"
+						},
+						{
+							"tag2": "value"
+						}
+					]
+				}
+			},
+			{
+				"app3": {
+					"tags": [
+						{
+							"tag1": "value"
+						},
+						{
+							"tag2": "value"
+						},				  
+						{
+							"tag3": "value"
+						}
+					]
+				}
+			}
+		],
+		"friends":{
+			"friend":"tuvieja"
+		}
+	},
+	"webs":[
+		{
+			"web1":"weeeeeb"
+		},
+		{
+			"web2":"eeeasd"
+		}
+	]
+}

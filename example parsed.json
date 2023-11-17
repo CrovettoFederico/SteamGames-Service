@@ -1,0 +1,125 @@
+{
+    "UserRoamingConfigStore": {
+        "JSClientStorage": {
+            "spotlight.review.1253920": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "3"
+            },
+            "spotlight.review.1343240": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "2"
+            },
+            "spotlight.review.1416050": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "1"
+            },
+            "spotlight.review.219890": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "2"
+            },
+            "spotlight.review.2321310": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "2"
+            },
+            "spotlight.review.552520": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "2"
+            },
+            "spotlight.review.893680": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "1"
+            },
+            "spotlight.review.985890": {
+                "bWasAskedToRevise": "0",
+                "rgPromptDismissals": "3"
+            }
+        },
+        "Software": {
+            "valve": {
+                "Steam": {
+                    "apps": [
+                        {
+                            "252950": {
+                                "tags": [
+                                    {
+                                        "0": "favorite"
+                                    },
+                                    {
+                                        "1": "Sin fin"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "1227690": {
+                                "tags": [
+                                    {
+                                        "0": "Pasados"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "1583230": {
+                                "tags": [
+                                    {
+                                        "0": "Pasados"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "297130": {
+                                "tags": [
+                                    {
+                                        "0": "Pasados"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "1049410": {
+                                "tags": [
+                                    {
+                                        "0": "Pasados"
+                                    }
+                                ]
+                            }
+                        },
+                        {
+                            "322500": {
+                                "tags": [
+                                    {
+                                        "0": "Pasados"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
+                    "DesktopShortcutCheck": "0",
+                    "friendsui": {
+                        "FriendsUIJSON": "{\"bNotifications_ShowIngame\":true,\"bNotifications_ShowOnline\":false,\"bNotifications_ShowMessage\":true,\"bNotifications_EventsAndAnnouncements\":true,\"bSounds_PlayIngame\":false,\"bSounds_PlayOnline\":false,\"bSounds_PlayMessage\":true,\"bSounds_EventsAndAnnouncements\":false,\"bAlwaysNewChatWindow\":false,\"bForceAlphabeticFriendSorting\":false,\"nChatFlashMode\":0,\"bRememberOpenChats\":false,\"bCompactQuickAccess\":false,\"bCompactFriendsList\":false,\"bNotifications_ShowChatRoomNotification\":true,\"bSounds_PlayChatRoomNotification\":true,\"bHideOfflineFriendsInTagGroups\":false,\"bHideCategorizedFriends\":false,\"bCategorizeInGameFriendsByGame\":true,\"nChatFontSize\":2,\"b24HourClock\":true,\"bDoNotDisturbMode\":false,\"bDisableEmbedInlining\":false,\"bSignIntoFriends\":true,\"bDisableSpellcheck\":true,\"bDisableRoomEffects\":true,\"bAnimatedAvatars\":true,\"featuresEnabled\":{\"DoNotDisturb\":1,\"LoaderWindowSynchronization\":1,\"NonFriendMessageHandling\":1,\"NewVoiceHotKeyState\":1,\"PersonaNotifications\":1,\"ServerVirtualizedMemberLists\":1,\"SteamworksChatAPI\":1,\"FriendsFilter\":1}}"
+                    },
+                    "ShowScreenshotManager": "0",
+                    "SSAVersion": "3",
+                    "StartMenuShortcutCheck": "0",
+                    "SteamDefaultDialog": "#app_store",
+                    "SurveyDate": "2023-03-02",
+                    "SurveyDateVersion": "4717903827499154628"
+                }
+            }
+        },
+        "Web": {
+            "WebFav0_Name": "Google",
+            "WebFav0_URL": "https://www.google.com/",
+            "WebFav1_Name": "YouTube",
+            "WebFav1_URL": "http://www.youtube.com/",
+            "WebFav2_Name": "Twitter",
+            "WebFav2_URL": "http://www.twitter.com/",
+            "WebFav3_Name": "Facebook",
+            "WebFav3_URL": "http://www.facebook.com/",
+            "WebFav4_Name": "Reddit",
+            "WebFav4_URL": "http://www.reddit.com/"
+        }
+    }
+}
