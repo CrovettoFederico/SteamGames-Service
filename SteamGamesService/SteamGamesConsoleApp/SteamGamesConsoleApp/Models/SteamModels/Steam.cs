@@ -22,7 +22,14 @@ namespace SteamGamesConsoleApp.Models.SteamModels {
             List<SteamApp> AppList = new List<SteamApp>();
             apps.ForEach(x =>
             {
-                AppList.Add(new SteamApp() { Id = x.Keys.First(), Tags = x.Values.First().GetTags() });
+                try {
+                    AppList.Add(new SteamApp() { Id = x.Keys.First(), Tags = x.Values.First().GetTags() });
+                } catch (Exception e) {
+                    AppList.Add(new SteamApp() {
+                        Id = x.Keys.First(),
+                        Tags = null
+                    });
+                }
             });
             return AppList;
         }

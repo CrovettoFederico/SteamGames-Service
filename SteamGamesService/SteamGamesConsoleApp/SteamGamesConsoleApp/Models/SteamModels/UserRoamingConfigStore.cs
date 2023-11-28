@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SteamGamesConsoleApp.Models.SteamModels {
-    public class UserRoamingConfigStore
+    public class UserLocalConfigStore
     {
         public Software Software { get; set; }
         public Dictionary<string, string> Web { get; set; }

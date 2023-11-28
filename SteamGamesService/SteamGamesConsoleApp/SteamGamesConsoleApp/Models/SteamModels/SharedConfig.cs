@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 namespace SteamGamesConsoleApp.Models.SteamModels {
     public class SharedConfig
     {
-        public UserRoamingConfigStore UserRoamingConfigStore { get; set; }
+        public UserLocalConfigStore UserLocalConfigStore { get; set; }
     }
 }
