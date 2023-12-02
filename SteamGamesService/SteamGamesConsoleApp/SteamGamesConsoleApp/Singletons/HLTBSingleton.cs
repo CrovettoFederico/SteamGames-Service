@@ -17,28 +17,30 @@ namespace SteamGamesConsoleApp.Singletons {
         private static string DetailUrl = Context.Configuration["HLTBDetailUrl"];
 
         public static Duracion ConseguirCuantoDura(string NombreJuego) {
+            try {
+                HLTBResponse Juego = new HLTBResponse();
 
-            HLTBResponse Juego = new HLTBResponse();
+                using (var client = new HttpClient()) {
+                    string JsonGameSearch = "";
+                    var Response = client.GetAsync(SearchUrl + NombreJuego).Result;
+                    JsonGameSearch = Response.Content.ReadAsStringAsync().Result;
 
-            using (var client = new HttpClient()) {
-                string JsonGameSearch = "";
-                var Response = client.GetAsync(SearchUrl + NombreJuego).Result;
-                JsonGameSearch = Response.Content.ReadAsStringAsync().Result;
+                    List<HLTBResponse> JuegosEncontrados = JsonConvert.DeserializeObject<List<HLTBResponse>>(JsonGameSearch);
+                    var JuegoId = JuegosEncontrados.MaxBy(x => x.similarity).id;
+                    Response = client.GetAsync(DetailUrl + JuegoId.ToString()).Result;
+                    JsonGameSearch = Response.Content.ReadAsStringAsync().Result;
+                    Juego = JsonConvert.DeserializeObject<HLTBResponse>(JsonGameSearch);
 
-                List<HLTBResponse> JuegosEncontrados = JsonConvert.DeserializeObject<List<HLTBResponse>>(JsonGameSearch);
-                var JuegoId = JuegosEncontrados.MaxBy(x => x.similarity).id;
-                Response = client.GetAsync(DetailUrl + JuegoId.ToString()).Result;
-                JsonGameSearch = Response.Content.ReadAsStringAsync().Result;
-                Juego = JsonConvert.DeserializeObject<HLTBResponse>(JsonGameSearch);
+                }
 
+                return new Duracion() {
+                    Horas = Juego.gameplayMainExtra,
+                    Juego = NombreJuego,
+                    _Duracion = GetDuracionEnum(Juego.gameplayMainExtra)
+                };
+            }catch (Exception e) {
+                throw new Exception("Error al conseguir duracion del juego " + NombreJuego, e );
             }
-
-            return new Duracion() {
-                Horas = Juego.gameplayMainExtra,
-                Juego = NombreJuego,
-                _Duracion = GetDuracionEnum(Juego.gameplayMainExtra)
-            };
-            
         }
 
         private static DuracionEnum GetDuracionEnum(double horas) {

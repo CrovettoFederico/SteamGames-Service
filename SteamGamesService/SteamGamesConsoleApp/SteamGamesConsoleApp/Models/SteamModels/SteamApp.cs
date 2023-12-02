@@ -12,6 +12,7 @@ namespace SteamGamesConsoleApp.Models.SteamModels {
     public class SteamApp {
         public string Id { get; set; }
         public List<SteamTag> Tags { get; set; }
+        public string? Hidden = "0";
 
         public VProperty ToVProperty() {
             //property-> object -> property->objects->tags como propertys          
@@ -24,9 +25,10 @@ namespace SteamGamesConsoleApp.Models.SteamModels {
             });
 
             VProperty TagsProp = new VProperty("tags", TagsVO);
-
+            VProperty HiddenProp = new VProperty("hidden", new VValue(Hidden));
             VObject AppVObject = new VObject() {
-                TagsProp
+                TagsProp,
+                HiddenProp
             };
 
             VProperty AppProp = new VProperty(Id, AppVObject);

@@ -10,6 +10,8 @@ namespace SteamGamesConsoleApp.Models.SteamModels
     {
         public List<Dictionary<string, string>> tags { get; set; }
 
+        public string? hidden = "0";
+
         public List<SteamTag> GetTags()
         {
             var CurrentTags = new List<SteamTag>();

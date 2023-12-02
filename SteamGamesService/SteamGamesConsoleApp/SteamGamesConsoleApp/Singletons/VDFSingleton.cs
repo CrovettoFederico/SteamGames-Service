@@ -10,7 +10,8 @@ namespace SteamGamesConsoleApp.Singletons {
 
         static readonly string VDFFileName = Context.Configuration["VDFFileName"];
         static readonly string VDFPath = Context.Configuration["VDFPath"];
-        static readonly string ComasRegex = ",(?=(?:[^[\\]]*\\[[^[\\]]*\\])*[^[\\]]*\\])";
+        static readonly string VDFBackUpPath = Context.Configuration["VDFBackUpPath"];
+        static readonly string ComasRegex = ",(?![^{}[\\]]*(?:}|]|\"(?:[^\"\\\\]|\\\\.)*\":))";//  ",(?=(?:[^[\\]]*\\[[^[\\]]*\\])*[^[\\]]*\\])";
         static readonly string TagsRegex = "\"tags\": {([^}]*)}";
 
     
@@ -54,7 +55,9 @@ namespace SteamGamesConsoleApp.Singletons {
         /// <param name="vdf">Objeto VDF de referencia.</param>
         /// <returns>Objeto VDF ya modificado</returns>
         public static SharedConfig WriteAppDiferences(SharedConfig NewConfig, VProperty RefVDF) {
-           
+
+            BackUpSecurity.BackUpFile(VDFPath, VDFBackUpPath, VDFFileName);
+
             SharedConfig RefConfig = GetSharedConfigObject(RefVDF);
             VProperty NewVDF = (VProperty)RefVDF.DeepClone();
             List<SteamApp> Differences = GetAppDifferences(NewConfig, RefConfig);
@@ -88,28 +91,7 @@ namespace SteamGamesConsoleApp.Singletons {
                     }                    
                 }
             });
-            
 
-            /*
-            List<SteamApp> Differences = NewSteamApps.Where(NewSteamApp => {
-                return RefSteamApps.Where(
-                    RefSteamApp => {
-                        bool DiffApp;
-                        try {
-                            DiffApp = RefSteamApp.Id == NewSteamApp.Id && !NewSteamApp.Tags.Where(NewTag => {
-                                bool MismosTags = RefSteamApp.Tags.Where(RefTag => {
-                                    bool MismoTag = (RefTag.Id == NewTag.Id && RefTag.Name == NewTag.Name);
-                                    return MismoTag;
-                                }).ToList().Any();
-                                return MismosTags;
-                            }).ToList().Any();
-                        }catch(Exception E) {
-                            DiffApp = RefSteamApp.Id == NewSteamApp.Id && NewSteamApp.Tags != RefSteamApp.Tags;
-                        }
-                        return DiffApp;
-                    }).ToList().Any();
-            }).ToList();
-            */
             return Differences;
         }
 
@@ -119,16 +101,18 @@ namespace SteamGamesConsoleApp.Singletons {
         /// <param name="NewVDF">VDF A ser modificado y escrito</param>
         /// <param name="Difference">Diferencia a añadir al NewVDF</param>
         private static void WriteVDFAppDifferences(VProperty NewVDF , SteamApp Difference) {
-            VProperty NewApp = Difference.ToVProperty();
+            try {
+                VProperty NewApp = Difference.ToVProperty();
 
-            NewVDF.Value["Software"]["valve"]["Steam"]["apps"][NewApp.Key] = NewApp.Value;
-            //NewVDF.Value["Software"]["valve"]["Steam"]["apps"].Append(NewVDFApp);
+                NewVDF.Value["Software"]["valve"]["Steam"]["apps"][NewApp.Key] = NewApp.Value;
 
-            
-            using (TextWriter writer = File.CreateText(VDFPath + VDFFileName)) {
-                // Serialize the settings object to VDF and write to the file
-                var vdfSerializer = new VdfSerializer();
-                vdfSerializer.Serialize(writer, NewVDF);
+                using (TextWriter writer = File.CreateText(VDFPath + VDFFileName)) {
+                    // Serialize the settings object to VDF and write to the file
+                    var vdfSerializer = new VdfSerializer();
+                    vdfSerializer.Serialize(writer, NewVDF);
+                }
+            }catch(Exception e) {
+                throw new Exception("Error al escribir el VDF.", e); 
             }
         }
     }

@@ -19,14 +19,15 @@ namespace SteamGamesConsoleApp.Models.SteamModels {
         
         public List<SteamApp> GetAppList()
         {
+
             List<SteamApp> AppList = new List<SteamApp>();
-            apps.ForEach(x =>
+            apps[0].ToList().ForEach(x =>
             {
                 try {
-                    AppList.Add(new SteamApp() { Id = x.Keys.First(), Tags = x.Values.First().GetTags() });
+                    AppList.Add(new SteamApp() { Id = x.Key, Tags = x.Value.GetTags() });
                 } catch (Exception e) {
                     AppList.Add(new SteamApp() {
-                        Id = x.Keys.First(),
+                        Id = x.Key,
                         Tags = null
                     });
                 }
